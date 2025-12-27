@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
-import blogData from '../Data/BlogData'
+import blogData from '../../Data/BlogData'
 import { FaClock, FaCalendarAlt, FaArrowRight } from "react-icons/fa";
-
-const Blogs = () => {
-    
-    const [activeCategory, setActiveCategory] = useState("All");
+const AllBlogs = () => {
+   const [activeCategory, setActiveCategory] = useState("All");
     
     const filteredBlogs = activeCategory === "All" 
         ? blogData 
@@ -94,4 +92,4 @@ const Blogs = () => {
     )
 }
 
-export default Blogs
+export default AllBlogs

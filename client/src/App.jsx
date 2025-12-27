@@ -3,7 +3,7 @@ import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import { Routes, Route } from 'react-router-dom'
-import Blogs from './pages/Blogs'
+import AllBlogs from './pages/Blogs page/AllBlogs'
 
 const App = () => {
   return (
@@ -11,10 +11,10 @@ const App = () => {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/blogs" element={<Blogs/>} />
-        <Route path="/blogs/fitness" element={<Blogs/>} />
-        <Route path="/blogs/finance" element={<Blogs/>} />
-        <Route path="/blogs/technology" element={<Blogs/>} />
+        <Route path="/blogs" element={<AllBlogs/>} />
+        <Route path="/blogs/fitness" element={<AllBlogs/>} />
+        <Route path="/blogs/finance" element={<AllBlogs/>} />
+        <Route path="/blogs/technology" element={<AllBlogs/>} />
         
       </Routes>
       <Footer/>
