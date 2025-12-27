@@ -6,10 +6,10 @@ import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 
-import AllBlogs from './pages/Blogs page/AllBlogs'
-import FitnessBlogs from './pages/Blogs page/FitnessBlogs'
-import FinanceBlogs from './pages/Blogs page/FinanceBlogs'
-import TechnologyBlogs from './pages/Blogs page/TechnologyBlogs'
+import AllBlogs from './pages/blogs/AllBlogs'
+import FitnessBlogs from './pages/blogs/FitnessBlogs'
+import FinanceBlogs from './pages/blogs/FinanceBlogs'
+import TechnologyBlogs from './pages/blogs/TechnologyBlogs'
 import ScrollToTop from './components/ScrollToTop'
 
 const App = () => {
