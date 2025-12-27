@@ -7,7 +7,7 @@ const NavBar = () => {
 
 
     return (
-        <nav className="w-full fixed bg-white">
+        <nav className="w-full fixed bg-white z-50">
             <div className='px-5 md:px-30 py-3 md:py-5 flex items-center justify-between'>
                 {/* logo */}
                 <div className='text-2xl font-bold text-[#0D9488]'>FitFinTech</div>
