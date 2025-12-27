@@ -1,84 +1,82 @@
 import React from 'react'
-import { FaDumbbell, FaChartLine, FaMicrochip } from "react-icons/fa";
+import { FaCalculator, FaChartPie, FaRunning, FaRobot, FaArrowRight } from "react-icons/fa";
 
 const FeaturedTools = () => {
-  // Data array to make the code cleaner and easier to edit later
-    const cards = [
-      {
-        title: "Fitness",
-        icon: <FaDumbbell className="text-4xl text-teal-600 mb-4" />,
-        desc: "Master your health with science-backed diet tips, workouts, and fitness hacks.",
-        items: ["Weight Loss Strategies", "Workout Plans", "Nutrition Guides"]
-      },
-      {
-        title: "Finance",
-        icon: <FaChartLine className="text-4xl text-teal-600 mb-4" />,
-        desc: "Grow your wealth with smart investment advice, savings hacks, and market trends.",
-        items: ["Investment Strategies", "Budgeting 101", "Crypto & Stocks"]
-      },
-      {
-        title: "Tech",
-        icon: <FaMicrochip className="text-4xl text-teal-600 mb-4" />,
-        desc: "Stay ahead with the latest gadget reviews, AI tools, and software tutorials.",
-        items: ["Gadget Reviews", "AI Tools & Tips", "Coding Tutorials"]
-      },
-      {
-        title: "Tech",
-        icon: <FaMicrochip className="text-4xl text-teal-600 mb-4" />,
-        desc: "Stay ahead with the latest gadget reviews, AI tools, and software tutorials.",
-        items: ["Gadget Reviews", "AI Tools & Tips", "Coding Tutorials"]
-      },
-      {
-        title: "Tech",
-        icon: <FaMicrochip className="text-4xl text-teal-600 mb-4" />,
-        desc: "Stay ahead with the latest gadget reviews, AI tools, and software tutorials.",
-        items: ["Gadget Reviews", "AI Tools & Tips", "Coding Tutorials"]
-      },
-    ];
-  
-    return (
-      <div className='py-20 bg-gray-50 flex flex-col items-center justify-center px-5 md:px-20'>
-          
-          {/* Section Header */}
-          <h1 className='text-teal-600 text-3xl md:text-5xl font-bold mb-4 text-center'>
-              Featured Tools & Calculators
-          </h1>
-          <p className='text-gray-500 text-center max-w-2xl mb-12 text-lg'>
-              High-engagement tools trusted by thousands
-          </p>
-  
-          {/* Cards Container */}
-          <div className='w-full grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl'>
-              
-              {/* Map through the cards data to generate HTML */}
-              {cards.map((card, index) => (
-                  <div key={index} className='bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 p-8 border border-gray-100 flex flex-col items-center text-center'>
-                      
-                      {/* Icon */}
-                      <div className='bg-teal-50  rounded-full mb-4'>
-                          {card.icon}
-                      </div>
-  
-                      {/* Title */}
-                      <h3 className='text-2xl font-bold text-gray-800 mb-3'>{card.title}</h3>
-                      
-                      {/* Description */}
-                      <p className='text-gray-600 mb-6 leading-relaxed'>
-                          {card.desc}
-                      </p>
-  
-                      {/* List Items */}
-                      <ul className='text-gray-500 space-y-2 w-full text-left pl-8 list-disc'>
-                          {card.items.map((item, i) => (
-                              <li key={i}>{item}</li>
-                          ))}
-                      </ul>
-                  </div>
-              ))}
-              
-          </div>
-      </div>
-    )
+  return (
+    <div className='md:py-24 bg-gray-50 px-5 md:px-20'>
+        
+        {/* Section Header - Left Aligned for variety */}
+        <div className='max-w-7xl mx-auto mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6'>
+            <div>
+                <h2 className='text-teal-600 font-bold tracking-wide uppercase text-sm mb-2'>
+                    Interactive Tools
+                </h2>
+                <h1 className='text-4xl md:text-5xl font-bold text-gray-900'>
+                    Try our Calculators
+                </h1>
+            </div>
+            <p className='text-gray-500 max-w-md text-lg md:text-right'>
+                Stop guessing. Use our data-driven tools to plan your health and wealth.
+            </p>
+        </div>
+
+        {/* BENTO GRID LAYOUT */}
+        <div className='max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 h-auto md:h-[500px]'>
+            
+            {/* CARD 1: Large Featured Tool (Takes up 2 columns) */}
+            <div className='md:col-span-2 md:row-span-2 bg-[#0D9488] rounded-3xl p-8 relative overflow-hidden group cursor-pointer shadow-xl transition-transform hover:scale-[1.01]'>
+                <div className='relative z-10 flex flex-col justify-between h-full'>
+                    <div>
+                        <div className='bg-white/20 w-12 h-12 flex items-center justify-center rounded-xl backdrop-blur-sm mb-6'>
+                            <FaRobot className='text-white text-2xl' />
+                        </div>
+                        <h3 className='text-3xl font-bold text-white mb-2'>AI Diet Planner</h3>
+                        <p className='text-teal-50 text-lg max-w-sm'>
+                            Get a personalized meal plan tailored to your body type, budget, and taste buds in seconds.
+                        </p>
+                    </div>
+                    <button className='bg-white text-teal-700 font-bold py-3 px-6 rounded-lg w-max flex items-center gap-2 mt-8 group-hover:gap-4 transition-all'>
+                        Generate Plan <FaArrowRight />
+                    </button>
+                </div>
+                {/* Decorative Circle Background */}
+                <div className='absolute -right-10 -bottom-20 w-80 h-80 bg-white/10 rounded-full blur-3xl group-hover:bg-white/20 transition-all'></div>
+            </div>
+
+            <div className='bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all cursor-pointer group flex flex-col justify-between'>
+                <div className='flex justify-between items-start'>
+                    <div className='bg-orange-100 p-3 rounded-xl'>
+                        <FaChartPie className='text-orange-600 text-xl' />
+                    </div>
+                    <FaArrowRight className='text-gray-300 group-hover:text-orange-600 transition-colors -rotate-45 group-hover:rotate-0' />
+                </div>
+                <div>
+                    <h4 className='text-xl font-bold text-gray-800 mt-4'>SIP Calculator</h4>
+                    <p className='text-sm text-gray-500 mt-1'>Estimate your mutual fund returns.</p>
+                </div>
+            </div>
+
+            <div className='bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all cursor-pointer group flex flex-col justify-between'>
+                <div className='flex justify-between items-start'>
+                    <div className='bg-blue-100 p-3 rounded-xl'>
+                        <FaRunning className='text-blue-600 text-xl' />
+                    </div>
+                    <FaArrowRight className='text-gray-300 group-hover:text-blue-600 transition-colors -rotate-45 group-hover:rotate-0' />
+                </div>
+                <div>
+                    <h4 className='text-xl font-bold text-gray-800 mt-4'>BMI Checker</h4>
+                    <p className='text-sm text-gray-500 mt-1'>Check your health stats instantly.</p>
+                </div>
+            </div>
+
+        </div>
+        <div className='flex justify-center mt-12'>
+            <button className='bg-transparent border-2 border-teal-600 text-teal-700 hover:bg-teal-600 hover:text-white transition-colors font-bold py-3 px-8 rounded-lg'>
+                Explore More Tools
+            </button>
+        </div>
+    </div>
+  )
 }
 
 export default FeaturedTools
