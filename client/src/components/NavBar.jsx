@@ -17,7 +17,8 @@ const NavBar = () => {
                 <ul className='hidden md:flex gap-8 text-lg text-gray-700'>
                     <li className='cursor-pointer hover:underline font-medium'>Fitness</li>
                     <li className='cursor-pointer hover:underline font-medium'>Finance</li>
-                    <li className='cursor-pointer hover:underline font-medium'>Tech</li>
+                    <li className='cursor-pointer hover:underline font-medium'>Technology</li>
+                    <li className='cursor-pointer hover:underline font-medium'>Tools</li>
                 </ul>
 
                 <div className='md:hidden'>
@@ -37,7 +38,8 @@ const NavBar = () => {
                     <ul className='flex flex-col font-bold gap-8 text-5xl'>
                         <li className='cursor-pointer hover:underline '>Fitness</li>
                         <li className='cursor-pointer hover:underline '>Finance</li>
-                        <li className='cursor-pointer hover:underline '>Tech</li>
+                        <li className='cursor-pointer hover:underline '>Technology</li>
+                        <li className='cursor-pointer hover:underline '>Tools</li>
                     </ul>
                     <FaTimes className="text-2xl text-gray-700 cursor-pointer absolute right-5 top-5 " onClick={() => setIsOpen(false)} />
                 </div>
