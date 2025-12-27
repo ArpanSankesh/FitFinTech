@@ -37,7 +37,7 @@ const LatestArticle = () => {
                         </div>
 
                         {/* Content Area */}
-                        <div className='p-6 flex flex-col flex-grow'>
+                        <div className='p-6 flex flex-col grow'>
                             
                             {/* Title */}
                             <h3 className='text-xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-teal-600 transition-colors line-clamp-2'>
@@ -45,7 +45,7 @@ const LatestArticle = () => {
                             </h3>
 
                             {/* Excerpt */}
-                            <p className='text-gray-500 text-sm mb-6 leading-relaxed line-clamp-3 flex-grow'>
+                            <p className='text-gray-500 text-sm mb-6 leading-relaxed line-clamp-3 grow'>
                                 {card.excerpt}
                             </p>
 

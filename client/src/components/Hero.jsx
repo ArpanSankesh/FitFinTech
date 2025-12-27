@@ -2,7 +2,7 @@ import React from 'react'
 
 const Hero = () => {
     return (
-        <div className='min-h-screen w-full bg-gradient-to-br from-[#111827] to-[#134E4A] flex flex-col p-5 md:px-30 justify-center text-white pt-10'>
+        <div className='min-h-screen w-full bg-linear-to-br from-[#111827] to-[#134E4A] flex flex-col p-5 md:px-30 justify-center text-white pt-10'>
             {/* left */}
             <div className="md:w-3/5">
                 <h1 className="text-white text-5xl md:text-7xl font-bold ">Fit Raho. <span className='text-[#0D9488]'>Rich Bano.</span> Smart Jeeyo.</h1>
