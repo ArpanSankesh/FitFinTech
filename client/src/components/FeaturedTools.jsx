@@ -3,7 +3,7 @@ import { FaCalculator, FaChartPie, FaRunning, FaRobot, FaArrowRight } from "reac
 
 const FeaturedTools = () => {
   return (
-    <div className='md:py-24 bg-gray-50 px-5 md:px-20'>
+    <div className='md:py-24 py-12 bg-gray-50 px-5 md:px-20'>
         
         {/* Section Header - Left Aligned for variety */}
         <div className='max-w-7xl mx-auto mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6'>

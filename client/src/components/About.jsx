@@ -25,10 +25,10 @@ const About = () => {
   ];
 
   return (
-    <div className='py-20 bg-gray-50 flex flex-col items-center justify-center px-5 md:px-20'>
+    <div className='py-12 bg-gray-50 flex flex-col items-center justify-center px-5 md:px-20'>
         
         {/* Section Header */}
-        <h1 className='text-teal-600 text-3xl md:text-5xl font-bold mb-4 text-center'>
+        <h1 className=' text-3xl md:text-5xl font-bold mb-4 text-center'>
             What We Write About
         </h1>
         <p className='text-gray-500 text-center max-w-2xl mb-12 text-lg'>

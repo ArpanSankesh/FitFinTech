@@ -5,7 +5,7 @@ import { FaClock, FaCalendarAlt, FaArrowRight } from "react-icons/fa";
 const LatestArticle = () => {
 
     return (
-        <div className='md:px-30 px-5 md:px-20 bg-white'>
+        <div className='md:px-30 px-5 py-12 bg-white'>
             
             <h1 className='text-3xl md:text-5xl font-bold mb-4 '>
                 Latest Articles
