@@ -3,15 +3,13 @@ import blogData from '../Data/BlogData'
 import { FaClock, FaCalendarAlt, FaArrowRight } from "react-icons/fa";
 
 const Blogs = () => {
-    // 1. State for the Active Category
+    
     const [activeCategory, setActiveCategory] = useState("All");
-
-    // 2. Function to filter data based on state
+    
     const filteredBlogs = activeCategory === "All" 
         ? blogData 
         : blogData.filter(blog => blog.category === activeCategory);
-
-    // Categories list for the buttons
+    
     const categories = ["All", "Fitness", "Finance", "Tech"];
 
     return (
@@ -26,12 +24,12 @@ const Blogs = () => {
             </p>
 
             {/* 3. Filter Buttons Section */}
-            <div className='flex flex-wrap justify-center gap-4 mb-12'>
+            <div className='flex flex-wrap justify-center md:gap-4 gap-1 mb-12'>
                 {categories.map((cat, index) => (
                     <button 
                         key={index}
                         onClick={() => setActiveCategory(cat)}
-                        className={`px-6 py-2 rounded-full font-bold text-sm transition-all duration-300 border-2 
+                        className={`px-4 py-2 md:px-6 md:py-2 rounded-full font-bold text-sm transition-all duration-300 border-2 
                         ${activeCategory === cat 
                             ? "bg-teal-600 text-white border-teal-600 shadow-md" 
                             : "bg-white text-gray-500 border-gray-200 hover:border-teal-400 hover:text-teal-600"}`}
