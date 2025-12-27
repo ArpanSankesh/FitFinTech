@@ -5,7 +5,7 @@ const FeaturedTools = () => {
   return (
     <div className='md:py-24 py-12 bg-gray-50 px-5 md:px-20'>
         
-        {/* Section Header - Left Aligned for variety */}
+        
         <div className='max-w-7xl mx-auto mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6'>
             <div>
                 <h2 className='text-teal-600 font-bold tracking-wide uppercase text-sm mb-2'>
@@ -20,10 +20,10 @@ const FeaturedTools = () => {
             </p>
         </div>
 
-        {/* BENTO GRID LAYOUT */}
+        
         <div className='max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 h-auto md:h-125'>
             
-            {/* CARD 1: Large Featured Tool (Takes up 2 columns) */}
+            
             <div className='md:col-span-2 md:row-span-2 bg-[#0D9488] rounded-3xl p-8 relative overflow-hidden group cursor-pointer shadow-xl transition-transform hover:scale-[1.01]'>
                 <div className='relative z-10 flex flex-col justify-between h-full'>
                     <div>
@@ -39,7 +39,7 @@ const FeaturedTools = () => {
                         Generate Plan <FaArrowRight />
                     </button>
                 </div>
-                {/* Decorative Circle Background */}
+                
                 <div className='absolute -right-10 -bottom-20 w-80 h-80 bg-white/10 rounded-full blur-3xl group-hover:bg-white/20 transition-all'></div>
             </div>
 

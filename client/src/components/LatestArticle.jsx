@@ -1,6 +1,7 @@
 import React from 'react'
 import blogData from '../Data/BlogData'
 import { FaClock, FaCalendarAlt, FaArrowRight } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const LatestArticle = () => {
 
@@ -19,7 +20,8 @@ const LatestArticle = () => {
                 
                 
                 {blogData.slice(0, 6).map((card, index) => (
-                    <div 
+                    <Link
+                        to={`/blogs/${card.id}`} 
                         key={index} 
                         className='group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer flex flex-col h-full'
                     >
@@ -61,7 +63,7 @@ const LatestArticle = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
 

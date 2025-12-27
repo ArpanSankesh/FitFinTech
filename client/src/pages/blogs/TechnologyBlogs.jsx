@@ -1,6 +1,7 @@
 import React from 'react'
 import blogData from '../../Data/BlogData'
 import { FaClock, FaCalendarAlt } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const TechnologyBlogs = () => {
   
@@ -22,7 +23,8 @@ const TechnologyBlogs = () => {
         <div className='max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8'>
             
             {techBlogs.map((card, index) => (
-                <div 
+                <Link
+                    to={`/blogs/${card.id}`} 
                     key={index} 
                     className='group bg-white rounded-xl md:rounded-2xl overflow-hidden border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col h-full'
                 >
@@ -55,7 +57,7 @@ const TechnologyBlogs = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </Link>
             ))}
         </div>
         

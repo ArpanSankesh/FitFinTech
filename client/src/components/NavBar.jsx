@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { FaBars, FaTimes } from "react-icons/fa"
+import { Link } from 'react-router-dom'
 
 const NavBar = () => {
 
@@ -10,15 +11,17 @@ const NavBar = () => {
         <nav className="w-full fixed bg-white z-50">
             <div className='px-5 md:px-30 py-3 md:py-5 flex items-center justify-between'>
                 {/* logo */}
-                <div className='text-2xl font-bold text-[#0D9488]'>FitFinTech</div>
+                <Link to='/'>
+                <div className='text-2xl font-bold text-[#0D9488] cursor-pointer'>FitFinTech</div>
+                </Link>
 
 
                 {/* Desktop view */}
                 <ul className='hidden md:flex gap-8 text-lg text-gray-700'>
-                    <li className='cursor-pointer hover:underline font-medium'>Fitness</li>
-                    <li className='cursor-pointer hover:underline font-medium'>Finance</li>
-                    <li className='cursor-pointer hover:underline font-medium'>Technology</li>
-                    <li className='cursor-pointer hover:underline font-medium'>Tools</li>
+                    <li><Link to='/blogs/fitness' className='cursor-pointer hover:underline font-medium'>Fitness</Link></li>
+                    <li><Link to='/blogs/finance' className='cursor-pointer hover:underline font-medium'>Finance</Link></li>
+                    <li><Link to='/blogs/technology' className='cursor-pointer hover:underline font-medium'>Technology</Link></li>
+                    <li><Link to='/tools' className='cursor-pointer hover:underline font-medium'>Tools</Link></li>
                 </ul>
 
                 <div className='md:hidden'>

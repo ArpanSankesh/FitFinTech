@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
-import blogData from '../../Data/BlogData'
+import toolsData from '../../Data/ToolsData'
 import { FaClock, FaCalendarAlt, FaArrowRight } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-const AllBlogs = () => {
-   const [activeCategory, setActiveCategory] = useState("All");
+
+const AllTools = () => {
+  const [activeCategory, setActiveCategory] = useState("All");
     
     const filteredBlogs = activeCategory === "All" 
-        ? blogData 
-        : blogData.filter(blog => blog.category === activeCategory);
+        ? toolsData 
+        : toolsData.filter(blog => blog.category === activeCategory);
     
     const categories = ["All", "Fitness", "Finance", "Tech"];
 
@@ -16,7 +17,7 @@ const AllBlogs = () => {
             
             {/* Header */}
             <h1 className='text-3xl md:text-5xl font-bold mb-4 text-center text-gray-900'>
-                All Articles
+                Our Tools 
             </h1>
             <p className='text-gray-500 mb-8 text-lg leading-tight text-center max-w-xl mx-auto'>
                 Expert insights across fitness, finance, and technology
@@ -96,4 +97,4 @@ const AllBlogs = () => {
     )
 }
 
-export default AllBlogs
+export default AllTools
