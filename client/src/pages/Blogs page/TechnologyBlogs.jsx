@@ -32,9 +32,7 @@ const TechnologyBlogs = () => {
                             alt={card.title} 
                             className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-500' 
                         />
-                        <div className='absolute top-2 left-2 md:top-4 md:left-4 bg-teal-600/90 backdrop-blur-sm text-white text-[10px] md:text-xs font-bold px-2 py-1 md:px-3 rounded-full uppercase tracking-wide shadow-sm'>
-                            {card.category}
-                        </div>
+                        
                     </div>
 
                     <div className='p-3 md:p-6 flex flex-col grow'>

@@ -10,10 +10,13 @@ import AllBlogs from './pages/Blogs page/AllBlogs'
 import FitnessBlogs from './pages/Blogs page/FitnessBlogs'
 import FinanceBlogs from './pages/Blogs page/FinanceBlogs'
 import TechnologyBlogs from './pages/Blogs page/TechnologyBlogs'
+import ScrollToTop from './components/ScrollToTop'
 
 const App = () => {
   return (
     <div>
+      <ScrollToTop />
+      
       <NavBar />
       <Routes>
         <Route path="/" element={<Home/>} />

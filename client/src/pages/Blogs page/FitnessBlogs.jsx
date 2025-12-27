@@ -9,7 +9,7 @@ const FitnessBlogs = () => {
 
             {/* Header */}
             <h1 className='text-3xl md:text-5xl font-bold mb-4 text-center text-teal-600'>
-                Fitness Article
+                Fitness Guides
             </h1>
             <p className='text-gray-500 mb-12 text-lg leading-tight text-center max-w-xl mx-auto'>
                 Workouts, nutrition, and science-backed health tips.
