@@ -16,6 +16,7 @@ import AllTools from './pages/tools/AllTools'
 
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsConditions from './pages/TermsAndCondition';
+import Login from './pages/Login'
 
 const App = () => {
   return (
@@ -40,6 +41,9 @@ const App = () => {
         {/* Other Routes */}
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-conditions" element={<TermsConditions />} />
+
+        {/* Admin routes */}
+        <Route path="/admin" element={<Login />} />
 
       </Routes>
       <Footer />
