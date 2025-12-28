@@ -17,12 +17,16 @@ import AllTools from './pages/tools/AllTools'
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsConditions from './pages/TermsAndCondition';
 import Login from './pages/Login'
+import { ToastContainer } from 'react-toastify'
+import AdminDashboard from './pages/admin/AdminDashboard'
+import AddBlog from './pages/admin/AddBlog'
 
 const App = () => {
   const location = useLocation();
   const isAdminRoute = location.pathname === '/admin';
   return (
     <div>
+      <ToastContainer />
       <ScrollToTop />
 
       {!isAdminRoute && <NavBar />}
@@ -47,6 +51,8 @@ const App = () => {
 
         {/* Admin routes */}
         <Route path="/admin" element={<Login />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/add-blog" element={<AddBlog />} />
 
       </Routes>
 
