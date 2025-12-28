@@ -10,7 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [name, setName] = useState(''); // Added Name state for Register
   
-  // States: 'Login' or 'Sign Up' (Removed 'Forgot Password' state)
+ 
   const [currState, setCurrState] = useState('Login'); 
   
   const navigate = useNavigate();
@@ -32,12 +32,7 @@ const Login = () => {
             }
 
         } else {
-            // --- LOGIN ---
-            // Used the context login function or direct axios call
-            // If using context login:
-            // await login(email, password);
             
-            // Or direct Axios (to match your style):
             const { data } = await axios.post(backendUrl + '/api/auth/login', { email, password });
             if (data.success) {
                 localStorage.setItem('token', data.token);

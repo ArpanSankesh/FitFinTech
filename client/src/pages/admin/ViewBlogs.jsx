@@ -152,7 +152,7 @@ const ViewBlogs = () => {
                 )}
             </div>
 
-            {/* --- DELETE CONFIRMATION MODAL --- */}
+           
             {showDeleteModal && (
                 <div className='fixed inset-0 bg-black/50 flex items-center justify-center z-50 backdrop-blur-sm'>
                     <div className='bg-white rounded-xl shadow-2xl p-6 w-full max-w-sm animate-fade-in'>
@@ -178,7 +178,7 @@ const ViewBlogs = () => {
                                 onClick={executeDelete}
                                 className='flex-1 px-4 py-2 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition-colors shadow-md'
                             >
-                                Yes, Delete
+                                Yes, Delete !
                             </button>
                         </div>
 
