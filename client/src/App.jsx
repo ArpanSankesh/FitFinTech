@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
@@ -19,11 +19,14 @@ import TermsConditions from './pages/TermsAndCondition';
 import Login from './pages/Login'
 
 const App = () => {
+  const location = useLocation();
+  const isAdminRoute = location.pathname === '/admin';
   return (
     <div>
       <ScrollToTop />
 
-      <NavBar />
+      {!isAdminRoute && <NavBar />}
+      
       <Routes>
         {/* home */}
         <Route path="/" element={<Home />} />
@@ -46,7 +49,9 @@ const App = () => {
         <Route path="/admin" element={<Login />} />
 
       </Routes>
-      <Footer />
+
+      {!isAdminRoute && <Footer />}
+      
     </div>
   )
 }
