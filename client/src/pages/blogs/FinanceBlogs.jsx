@@ -1,68 +1,94 @@
-import React from 'react'
-import blogData from '../../Data/BlogData'
+import React, { useState, useEffect, useContext } from 'react'
+import axios from 'axios'
+import { AppContext } from '../../context/AppContext'
 import { FaClock, FaCalendarAlt } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 const FinanceBlogs = () => {
-  
-  // FILTER: Only keep "Finance" category
-  const financeBlogs = blogData.filter(blog => blog.category === "Finance");
 
-  return (
-    <div className='md:px-20 px-4 py-24 bg-white'>
+    const { backendUrl } = useContext(AppContext);
+    const [blogs, setBlogs] = useState([]);
+
+    useEffect(() => {
+        const fetchBlogs = async () => {
+            try {
+                const response = await axios.get(`${backendUrl}/api/blogs/list`);
+                if (response.data.success) {
+                    const financeData = response.data.blogs.filter(blog => blog.category === "Finance");
+                    setBlogs(financeData);
+                }
+            } catch (error) {
+                console.error("Error fetching blogs:", error);
+            }
+        };
+        fetchBlogs();
+    }, [backendUrl]);
+
+    const getExcerpt = (htmlContent) => {
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = htmlContent;
+        const plainText = tempDiv.textContent || tempDiv.innerText || "";
+
         
-        {/* Header */}
-        <h1 className='text-3xl md:text-5xl font-bold mb-4 text-center text-teal-600'>
-            Finance Guides
-        </h1>
-        <p className='text-gray-500 mb-12 text-lg leading-tight text-center max-w-xl mx-auto'>
-            Investing strategies, money-saving hacks, and wealth building.
-        </p>
+        if (plainText.length > 120) {
+            return plainText.substring(0, 120) + "...";
+        }
+        return plainText;
+    }
 
-        {/* Grid */}
-        <div className='max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8'>
-            
-            {financeBlogs.map((card, index) => (
-                <Link
-                    to={`/blogs/${card.id}`}
-                    key={index} 
-                    className='group bg-white rounded-xl md:rounded-2xl overflow-hidden border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col h-full'
-                >
-                    <div className='relative h-32 md:h-56 overflow-hidden'>
-                        <img 
-                            src={card.image} 
-                            alt={card.title} 
-                            className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-500' 
-                        />
-                       
-                    </div>
+    const calculateReadTime = (text) => {
+        const words = text.split(/\s+/).length;
+        const minutes = Math.ceil(words / 200);
+        return `${minutes} min read`;
+    }
 
-                    <div className='p-3 md:p-6 flex flex-col grow'>
-                        <h3 className='text-sm md:text-xl font-bold text-gray-900 mb-2 md:mb-3 leading-tight group-hover:text-teal-600 transition-colors line-clamp-2'>
-                            {card.title}
-                        </h3>
+    return (
+        <div className='md:px-20 px-4 py-24 bg-white min-h-screen'>
 
-                        <p className='hidden md:block text-gray-500 text-sm mb-6 leading-relaxed line-clamp-3 grow'>
-                            {card.excerpt}
-                        </p>
+            <h1 className='text-3xl md:text-5xl font-bold mb-4 text-center text-teal-600'>
+                Finance Guides
+            </h1>
+            <p className='text-gray-500 mb-12 text-lg leading-tight text-center max-w-xl mx-auto'>
+                Investing strategies, money-saving hacks, and wealth building.
+            </p>
 
-                        <div className='border-t border-gray-100 pt-3 mt-auto flex items-center justify-between text-[10px] md:text-xs text-gray-400 font-medium'>
-                            <div className='flex flex-wrap items-center gap-2 md:gap-4'>
-                                <span className='flex items-center gap-1'>
-                                    <FaCalendarAlt /> {card.createdAt}
-                                </span>
-                                <span className='hidden md:flex items-center gap-1'>
-                                    <FaClock /> {card.readTime}
-                                </span>
+
+            <div className='max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8'>
+
+                {blogs.length > 0 ? blogs.map((card, index) => {
+                    const plainTextDescription = getExcerpt(card.description);
+                    const readTime = calculateReadTime(plainTextDescription);
+
+                    return (
+                        <Link to={`/blogs/${card._id}`} key={index} className='group bg-white rounded-xl md:rounded-2xl overflow-hidden border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col h-full'>
+
+                            {/* ✅ FIXED HEIGHT: Matches AllBlogs (h-32 to h-56) */}
+                            <div className='relative h-32 md:h-56 overflow-hidden'>
+                                <img src={card.image} alt={card.title} className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-500' />
                             </div>
-                        </div>
-                    </div>
-                </Link>
-            ))}
+
+                            <div className='p-3 md:p-6 flex flex-col grow'>
+                                <h3 className='text-sm md:text-xl font-bold text-gray-900 mb-2 md:mb-3 leading-tight group-hover:text-teal-600 transition-colors line-clamp-2'>
+                                    {card.title}
+                                </h3>
+                                <p className='hidden md:block text-gray-500 text-sm mb-6 leading-relaxed line-clamp-3 grow'>
+                                    {plainTextDescription}
+                                </p>
+                                <div className='border-t border-gray-100 pt-3 mt-auto flex items-center justify-between text-[10px] md:text-xs text-gray-400 font-medium'>
+                                    <div className='flex items-center gap-2 md:gap-4'>
+                                        <span className='flex items-center gap-1'><FaCalendarAlt /> {new Date(card.date).toLocaleDateString()}</span>
+                                        <span className='hidden md:flex items-center gap-1'><FaClock /> {readTime}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </Link>
+                    )
+                }) : (
+                    <div className="col-span-full text-center text-gray-500">No finance articles found.</div>
+                )}
+            </div>
         </div>
-        
-    </div>
-  )
+    )
 }
 
 export default FinanceBlogs

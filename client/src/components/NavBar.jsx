@@ -18,9 +18,10 @@ const NavBar = () => {
 
                 {/* Desktop view */}
                 <ul className='hidden md:flex gap-8 text-lg text-gray-700'>
-                    <li><Link to='/blogs/fitness' className='cursor-pointer hover:underline font-medium'>Fitness</Link></li>
-                    <li><Link to='/blogs/finance' className='cursor-pointer hover:underline font-medium'>Finance</Link></li>
-                    <li><Link to='/blogs/technology' className='cursor-pointer hover:underline font-medium'>Technology</Link></li>
+                    <li><Link to='/blogs' className='cursor-pointer hover:underline font-medium'>All Blogs</Link></li>
+                    <li><Link to='/blogs/fitness' className='cursor-pointer hover:underline font-medium'>Fitness Blog</Link></li>
+                    <li><Link to='/blogs/finance' className='cursor-pointer hover:underline font-medium'>Finance Blog</Link></li>
+                    <li><Link to='/blogs/technology' className='cursor-pointer hover:underline font-medium'>Technology Blog</Link></li>
                     <li><Link to='/tools' className='cursor-pointer hover:underline font-medium'>Tools</Link></li>
                 </ul>
 
