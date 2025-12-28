@@ -81,7 +81,7 @@ const TechnologyBlogs = () => {
                         </Link>
                     )
                 }) : (
-                    <div className="col-span-full text-center text-gray-500">No tech articles found.</div>
+                    <div className="col-span-full text-center text-gray-500">No tech articles found !</div>
                 )}
             </div>
         </div>
