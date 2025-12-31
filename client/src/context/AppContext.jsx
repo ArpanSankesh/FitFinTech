@@ -8,7 +8,7 @@ export const AppContextProvider = (props) => {
     
     // State to store the token and user data
     const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : false);
-    const backendUrl = "http://192.168.0.102:5000";
+    const backendUrl = "https://fitfintech.onrender.com";
 
     // Function to Login
     const login = async (email, password) => {
@@ -16,7 +16,7 @@ export const AppContextProvider = (props) => {
             const { data } = await axios.post(backendUrl + '/api/auth/login', { email, password });
 
             if (data.success) {
-                localStorage.setItem('token', data.token); // Save to browser storage
+                localStorage.setItem('token', data.token); 
                 setToken(data.token);
                 toast.success("Login Successful!");
             } else {
