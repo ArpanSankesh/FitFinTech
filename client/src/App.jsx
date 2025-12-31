@@ -24,6 +24,8 @@ import ViewBlogs from './pages/admin/ViewBlogs'
 import EditBlog from './pages/admin/EditBlog'
 import Profile from './pages/admin/Profile'
 import ResetPassword from './pages/admin/ResetPassword'
+import AboutUs from './pages/AboutUs'
+import ContactUs from './pages/ContactUs'
 
 const App = () => {
   const location = useLocation();
@@ -34,7 +36,7 @@ const App = () => {
       <ScrollToTop />
 
       {!isAdminRoute && <NavBar />}
-      
+
       <Routes>
         {/* home */}
         <Route path="/" element={<Home />} />
@@ -52,6 +54,8 @@ const App = () => {
         {/* Other Routes */}
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-conditions" element={<TermsConditions />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/contact" element={<ContactUs />} />
 
         {/* Admin routes */}
         <Route path="/admin" element={<Login />} />
@@ -65,7 +69,7 @@ const App = () => {
       </Routes>
 
       {!isAdminRoute && <Footer />}
-      
+
     </div>
   )
 }
