@@ -137,7 +137,7 @@ const AddBlog = () => {
                                 value={data.category}
                                 className='w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white'
                             >
-                                <option value="Lifestyle">Fitness</option>
+                                <option value="Fitness">Fitness</option>
                                 <option value="Finance">Finance</option>
                                 <option value="Technology">Technology</option>
                             </select>
