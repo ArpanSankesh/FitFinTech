@@ -8,7 +8,7 @@ export const AppContextProvider = (props) => {
     
     // State to store the token and user data
     const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : false);
-    const backendUrl = "http://localhost:5000"; // Your Backend URL
+    const backendUrl = "http://192.168.0.102:5000";
 
     // Function to Login
     const login = async (email, password) => {
