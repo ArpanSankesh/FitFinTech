@@ -126,7 +126,7 @@ const EditBlog = () => {
                     {/* Image Upload */}
                     <div>
                         <p className='text-sm font-medium text-gray-700 mb-3'>Blog Thumbnail</p>
-                        <label htmlFor="image" className='cursor-pointer block w-full max-w-[300px]'>
+                        <label htmlFor="image" className='cursor-pointer block w-full max-w-75'>
                             <div className='border-2 border-dashed border-gray-300 rounded-lg h-48 flex flex-col items-center justify-center bg-gray-50 hover:bg-gray-100 transition-colors relative overflow-hidden'>
                                 
                                 {/* Logic: Show New Image Preview OR Old Image URL */}
@@ -171,7 +171,7 @@ const EditBlog = () => {
                                 className='w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white'
                             >
                                 <option value="Technology">Technology</option>
-                                <option value="Startup">Startup</option>
+                                <option value="Startup">Fitness</option>
                                 <option value="Lifestyle">Lifestyle</option>
                                 <option value="Finance">Finance</option>
                             </select>

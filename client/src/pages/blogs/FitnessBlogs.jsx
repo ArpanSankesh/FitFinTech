@@ -8,6 +8,7 @@ const FitnessBlogs = () => {
 
     const { backendUrl } = useContext(AppContext);
     const [blogs, setBlogs] = useState([]);
+    const [loading, setLoading] = useState(true); // Added loading state
 
     useEffect(() => {
         const fetchBlogs = async () => {
@@ -19,6 +20,8 @@ const FitnessBlogs = () => {
                 }
             } catch (error) {
                 console.error("Error fetching blogs:", error);
+            } finally {
+                setLoading(false); // Stop loading
             }
         };
         fetchBlogs();
@@ -40,6 +43,11 @@ const FitnessBlogs = () => {
         const words = text.split(/\s+/).length;
         const minutes = Math.ceil(words / 200);
         return `${minutes} min read`;
+    }
+
+    // Loading UI
+    if (loading) {
+        return <div className='min-h-screen flex items-center justify-center text-teal-600 font-bold'>Loading fitness guides...</div>;
     }
 
     return (
