@@ -19,7 +19,7 @@ connectCloudinary();
 const allowedOrigins = [
   'http://localhost:5173',
   'http://192.168.0.102:5173',
-  'https://www.fitfintech-1.com',
+  'https://www.fitfintech.com',
   'https://fitfintech.com'      
 ];
 

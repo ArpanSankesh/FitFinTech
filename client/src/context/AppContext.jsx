@@ -8,7 +8,7 @@ export const AppContextProvider = (props) => {
     
     // State to store the token and user data
     const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : false);
-    const backendUrl = "https://fitfintech.onrender.com";
+    const backendUrl = "https://fitfintech-1.onrender.com";
 
     // Function to Login
     const login = async (email, password) => {
