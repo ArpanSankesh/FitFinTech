@@ -13,6 +13,10 @@ const blogSchema = new mongoose.Schema({
         type: String, 
         required: true
     },
+    mediaType: { 
+        type: String, 
+        default: 'image' // Default to image if not specified
+    },
     category: {
         type: String,
         required: true,
@@ -24,7 +28,7 @@ const blogSchema = new mongoose.Schema({
     },
     date: {
         type: Number,
-        default: Date.now()
+        default: Date.now
     }
 });
 
