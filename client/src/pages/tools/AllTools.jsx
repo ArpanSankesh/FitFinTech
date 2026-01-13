@@ -1,98 +1,92 @@
-import React, { useState } from 'react'
-import toolsData from '../../Data/ToolsData'
-import { FaClock, FaCalendarAlt, FaArrowRight } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { toolsData } from '../../Data/ToolsData'
+import { FaArrowRight } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 const AllTools = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
-    
-    const filteredBlogs = activeCategory === "All" 
-        ? toolsData 
-        : toolsData.filter(blog => blog.category === activeCategory);
-    
-    const categories = ["All", "Fitness", "Finance", "Tech"];
+    const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
+
+    // Simulate loading for 1 second to show the skeleton
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 1000);
+        return () => clearTimeout(timer);
+    }, []);
 
     return (
-        <div className='md:px-20 px-4 py-24 bg-white'>
+        <div className='md:px-20 px-4 py-24 bg-gray-50 min-h-screen'>
             
             {/* Header */}
-            <h1 className='text-3xl md:text-5xl font-bold mb-4 text-center text-gray-900'>
-                Our Tools 
-            </h1>
-            <p className='text-gray-500 mb-8 text-lg leading-tight text-center max-w-xl mx-auto'>
-                Expert insights across fitness, finance, and technology
-            </p>
-
-            {/* 3. Filter Buttons Section */}
-            <div className='flex flex-wrap justify-center md:gap-4 gap-1 mb-12'>
-                {categories.map((cat, index) => (
-                    <button 
-                        key={index}
-                        onClick={() => setActiveCategory(cat)}
-                        className={`px-4 py-2 md:px-6 md:py-2 rounded-full font-bold text-sm transition-all duration-300 border-2 
-                        ${activeCategory === cat 
-                            ? "bg-teal-600 text-white border-teal-600 shadow-md" 
-                            : "bg-white text-gray-500 border-gray-200 hover:border-teal-400 hover:text-teal-600"}`}
-                    >
-                        {cat}
-                    </button>
-                ))}
+            <div className='text-center mb-16'>
+                <h1 className='text-3xl md:text-5xl font-bold mb-4 text-gray-900'>
+                    Our Tools 
+                </h1>
+                <p className='text-gray-500 text-lg max-w-xl mx-auto'>
+                    Expert insights and calculators across fitness, finance, and technology.
+                </p>
             </div>
 
-            {/* Articles Grid  */}
-            <div className='max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8'>
+            {/* Tools Grid */}
+            <div className='max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8'>
                 
-                {filteredBlogs.map((card, index) => (
-                    
-                    
-                    <Link to={`/blogs/${card.id}`}
-                        key={index} 
-                        className='group bg-white rounded-xl md:rounded-2xl overflow-hidden border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col h-full'
-                        >
-                        {/* Image Wrapper */}
-                        <div className='relative h-32 md:h-56 overflow-hidden'>
-                            <img 
-                                src={card.image} 
-                                alt={card.title} 
-                                className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-500' 
-                                />
-                            
-                            <div className='absolute top-2 left-2 md:top-4 md:left-4 bg-teal-600/90 backdrop-blur-sm text-white text-[10px] md:text-xs font-bold px-2 py-1 md:px-3 rounded-full uppercase tracking-wide shadow-sm'>
-                                {card.category}
+                {loading ? (
+                    // --- SKELETON LOADING STATE ---
+                    [1, 2, 3, 4, 5, 6].map((n) => (
+                        <div key={n} className='bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 animate-pulse'>
+                            {/* Image Skeleton */}
+                            <div className='h-48 bg-gray-200 w-full'></div>
+                            {/* Content Skeleton */}
+                            <div className='p-6'>
+                                <div className='h-4 bg-gray-200 rounded w-1/4 mb-4'></div>
+                                <div className='h-8 bg-gray-200 rounded w-3/4 mb-4'></div>
+                                <div className='h-4 bg-gray-200 rounded w-full mb-2'></div>
+                                <div className='h-4 bg-gray-200 rounded w-5/6'></div>
                             </div>
                         </div>
+                    ))
+                ) : (
+                    // --- REAL DATA MAPPING ---
+                    toolsData.map((tool) => (
+                        <div 
+                            key={tool.id} 
+                            onClick={() => navigate(tool.path)}
+                            className='group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer flex flex-col h-full'
+                        >
+                            {/* Image Wrapper */}
+                            <div className='relative h-48 overflow-hidden'>
+                                <img 
+                                    src={tool.image} 
+                                    alt={tool.title} 
+                                    className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-500' 
+                                />
+                                {/* Category Badge */}
+                                <div className={`absolute top-4 left-4 ${tool.color} text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-md`}>
+                                    {tool.category}
+                                </div>
+                            </div>
 
-                        {/* Content Area */}
-                        <div className='p-3 md:p-6 flex flex-col grow'>
-                            
-                          
-                            <h3 className='text-sm md:text-xl font-bold text-gray-900 mb-2 md:mb-3 leading-tight group-hover:text-teal-600 transition-colors line-clamp-2'>
-                                {card.title}
-                            </h3>
+                            {/* Content Area */}
+                            <div className='p-6 flex flex-col grow'>
+                                <h3 className='text-xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors'>
+                                    {tool.title}
+                                </h3>
+                                
+                                <p className='text-gray-500 text-sm leading-relaxed mb-6 line-clamp-3'>
+                                    {tool.desc}
+                                </p>
 
-                            
-                            <p className='hidden md:block text-gray-500 text-sm mb-6 leading-relaxed line-clamp-3 grow'>
-                                {card.excerpt}
-                            </p>
-
-                            {/* Meta Data */}
-                            <div className='border-t border-gray-100 pt-3 mt-auto flex items-center justify-between text-[10px] md:text-xs text-gray-400 font-medium'>
-                                <div className='flex flex-wrap items-center gap-2 md:gap-4'>
-                                    <span className='flex items-center gap-1'>
-                                        <FaCalendarAlt /> {card.createdAt}
-                                    </span>
-                                    
-                                    <span className='hidden md:flex items-center gap-1'>
-                                        <FaClock /> {card.readTime}
-                                    </span>
+                                {/* Bottom Link */}
+                                <div className='mt-auto flex items-center gap-2 text-sm font-bold text-gray-400 group-hover:text-teal-600 transition-colors uppercase tracking-wider'>
+                                    Try Tool <FaArrowRight className='group-hover:translate-x-1 transition-transform' />
                                 </div>
                             </div>
                         </div>
-                    </Link>
-                
-                ))}
+                    ))
+                )}
+
             </div>
-            
         </div>
     )
 }

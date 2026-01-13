@@ -129,9 +129,7 @@ const updateBlog = async (req, res) => {
 // 6. Upload Editor Image (For Jodit)
 const uploadEditorImage = async (req, res) => {
     try {
-        // Jodit sends the file with a field name like "files[0]"
-        // If you use upload.any() in routes, req.files will be an array
-        // If you use upload.single(), req.file will be populated
+        
         
         const file = req.file;
 
@@ -147,7 +145,6 @@ const uploadEditorImage = async (req, res) => {
             fs.unlinkSync(file.path);
         }
 
-        // Return format strictly required by Jodit: { success: true, data: { files: [url] } }
         res.json({
             success: true,
             data: {

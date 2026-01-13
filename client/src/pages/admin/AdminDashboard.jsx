@@ -3,12 +3,14 @@ import { AppContext } from '../../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { FaRocket, FaPlus, FaList, FaSignOutAlt, FaChartLine, FaDumbbell, FaLaptopCode, FaMoneyBillWave, FaUserShield   } from "react-icons/fa";
+import { FaRocket, FaPlus, FaList, FaSignOutAlt, FaChartLine, FaDumbbell, FaLaptopCode, FaMoneyBillWave, FaUserShield } from "react-icons/fa";
 
 const AdminDashboard = () => {
   const { logout, backendUrl } = useContext(AppContext);
   const navigate = useNavigate();
 
+  // 1. Add a loading state
+  const [loading, setLoading] = useState(true);
 
   const [stats, setStats] = useState({
     total: 0,
@@ -30,7 +32,6 @@ const AdminDashboard = () => {
         if (data.success) {
           const blogs = data.blogs;
 
-          // Calculate Counts
           setStats({
             total: blogs.length,
             fitness: blogs.filter(b => b.category === "Fitness").length,
@@ -41,6 +42,9 @@ const AdminDashboard = () => {
       } catch (error) {
         console.log(error);
         toast.error("Failed to load dashboard data");
+      } finally {
+        // 2. Turn off loading when API call finishes (success or fail)
+        setLoading(false);
       }
     };
 
@@ -85,13 +89,13 @@ const AdminDashboard = () => {
 
         <div className='p-8'>
 
+          {/* 3. Pass the 'loading' prop to StatCard */}
           <div className='grid grid-cols-1 md:grid-cols-4 gap-6 mb-8'>
-            <StatCard title="Total Blogs" value={stats.total} color="bg-gray-100 text-gray-600" icon={<FaList />} />
-            <StatCard title="Fitness" value={stats.fitness} color="bg-orange-50 text-orange-600" icon={<FaDumbbell />} />
-            <StatCard title="Finance" value={stats.finance} color="bg-green-50 text-green-600" icon={<FaMoneyBillWave />} />
-            <StatCard title="Technology" value={stats.technology} color="bg-blue-50 text-blue-600" icon={<FaLaptopCode />} />
+            <StatCard loading={loading} title="Total Blogs" value={stats.total} color="bg-gray-100 text-gray-600" icon={<FaList />} />
+            <StatCard loading={loading} title="Fitness" value={stats.fitness} color="bg-orange-50 text-orange-600" icon={<FaDumbbell />} />
+            <StatCard loading={loading} title="Finance" value={stats.finance} color="bg-green-50 text-green-600" icon={<FaMoneyBillWave />} />
+            <StatCard loading={loading} title="Technology" value={stats.technology} color="bg-blue-50 text-blue-600" icon={<FaLaptopCode />} />
           </div>
-
 
           <div className='bg-white rounded-xl shadow-sm border border-gray-100 p-8 text-center'>
             <div className='max-w-md mx-auto'>
@@ -116,11 +120,18 @@ const MenuLink = ({ icon, label, active, onClick }) => (
   </div>
 );
 
-const StatCard = ({ title, value, color, icon }) => (
+// 4. Update StatCard to show Skeleton when loading
+const StatCard = ({ title, value, color, icon, loading }) => (
   <div className='bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between'>
     <div>
       <p className='text-gray-500 text-sm mb-1'>{title}</p>
-      <h3 className='text-2xl font-bold text-gray-800'>{value}</h3>
+      {loading ? (
+        // SKELETON: A pulsing gray box
+        <div className='h-8 w-16 bg-gray-200 rounded animate-pulse mt-1'></div>
+      ) : (
+        // ACTUAL DATA
+        <h3 className='text-2xl font-bold text-gray-800'>{value}</h3>
+      )}
     </div>
     <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${color}`}>
       <span className='text-xl'>{icon}</span>

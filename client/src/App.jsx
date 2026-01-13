@@ -26,6 +26,9 @@ import Profile from './pages/admin/Profile'
 import ResetPassword from './pages/admin/ResetPassword'
 import AboutUs from './pages/AboutUs'
 import ContactUs from './pages/ContactUs'
+import FitFinCalculator from './pages/tools/FitFinCalculator'
+import DailyPlanner from './pages/tools/DailyPlanner'
+import BodyFatExpense from './pages/tools/BodyFatExpense'
 
 const App = () => {
   const location = useLocation();
@@ -50,6 +53,9 @@ const App = () => {
 
         {/* Tools */}
         <Route path="/tools" element={<AllTools />} />
+        <Route path='/tools/fit-fin-calculator' element={<FitFinCalculator />} />
+        <Route path='/tools/daily-planner' element={<DailyPlanner />} />
+        <Route path='/tools/body-fat-expense' element={<BodyFatExpense />} />
 
         {/* Other Routes */}
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
