@@ -12,7 +12,6 @@ const BlogPost = () => {
     const [blog, setBlog] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    // 1. Fetch Single Blog Data
     useEffect(() => {
         const fetchBlog = async () => {
             try {
@@ -32,7 +31,6 @@ const BlogPost = () => {
         fetchBlog();
     }, [id, backendUrl]);
 
-    // Helper: Calculate Read Time
     const calculateReadTime = (htmlContent) => {
         const tempDiv = document.createElement("div");
         tempDiv.innerHTML = htmlContent;
@@ -60,33 +58,39 @@ const BlogPost = () => {
             
             <div className='max-w-4xl mx-auto'>
                 
-                {/* Back Button */}
                 <Link to="/blogs" className='inline-flex items-center gap-2 text-gray-500 hover:text-teal-600 transition-colors mb-8 font-medium'>
                     <FaArrowLeft /> Back to Articles
                 </Link>
 
-                {/* 1. Cover Image */}
-                <div className='w-full h-64 md:h-[500px] rounded-3xl overflow-hidden shadow-lg mb-10 bg-gray-100'>
-                    <img 
-                        src={blog.image} 
-                        alt={blog.title} 
-                        className='w-full h-full object-cover'
-                    />
+                {/* 1. Cover Media (Video or Image) */}
+                <div className='w-full h-auto md:h-[500px] rounded-3xl overflow-hidden shadow-lg mb-10 bg-gray-100 flex items-center justify-center'>
+                    {blog.mediaType === 'video' ? (
+                        <video 
+                            src={blog.image} 
+                            controls 
+                            autoPlay 
+                            muted 
+                            className='w-full h-full object-contain bg-black'
+                        />
+                    ) : (
+                        <img 
+                            src={blog.image} 
+                            alt={blog.title} 
+                            className='w-full h-full object-cover'
+                        />
+                    )}
                 </div>
 
                 {/* 2. Header Content */}
                 <div className='mb-10'>
-                    {/* Category Badge */}
                     <span className='bg-teal-100 text-teal-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide'>
                         {blog.category}
                     </span>
 
-                    {/* Title */}
                     <h1 className='text-3xl md:text-5xl font-bold text-gray-900 mt-4 mb-6 leading-tight'>
                         {blog.title}
                     </h1>
 
-                    {/* Meta Data */}
                     <div className='flex flex-wrap items-center gap-6 text-gray-500 text-sm border-b border-gray-100 pb-8'>
                         <div className='flex items-center gap-2'>
                             <div className='w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-600'>
@@ -103,8 +107,7 @@ const BlogPost = () => {
                     </div>
                 </div>
 
-                {/* 3. The Blog Content (Rich Text) */}
-                {/* 'prose' class from Tailwind Typography plugin makes HTML look good automatically */}
+                {/* 3. Content */}
                 <div 
                     className='prose prose-lg prose-teal max-w-none text-gray-700 leading-relaxed'
                     dangerouslySetInnerHTML={{ __html: blog.description }} 
