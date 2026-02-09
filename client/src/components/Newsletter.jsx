@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { AppContext } from '../context/AppContext';
 
 const Newsletter = () => {
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState('idle'); // idle, loading, success, error
+  const [status, setStatus] = useState('idle'); 
+  const { backendUrl } = useContext(AppContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -11,32 +15,29 @@ const Newsletter = () => {
     setStatus('loading');
 
     try {
-      setTimeout(() => {
-        console.log("Subscribed:", email);
+      const { data } = await axios.post(`${backendUrl}/api/newsletter/subscribe`, { email });
+      
+      if (data.success) {
         setStatus('success');
         setEmail('');
-      }, 1500);
-
+        toast.success("Check your inbox! 🚀");
+      } else {
+        setStatus('error');
+        toast.error(data.message);
+      }
     } catch (error) {
       setStatus('error');
+      toast.error("Failed to connect to server.");
     }
   };
 
   return (
     <div className='w-full bg-[#0D9488] py-16 px-5'>
       <div className='max-w-4xl mx-auto text-center flex flex-col items-center justify-center'>
-        
-        <h2 className='text-3xl md:text-4xl font-bold text-white mb-3'>
-          Stay Updated
-        </h2>
-        <p className='text-teal-50 mb-8 text-lg'>
-          Get weekly tips on fitness, finance, and tech delivered to your inbox.
-        </p>
+        <h2 className='text-3xl md:text-4xl font-bold text-white mb-3'>Stay Updated</h2>
+        <p className='text-teal-50 mb-8 text-lg'>Weekly tips on fitness, finance, and tech.</p>
 
-        <form 
-          onSubmit={handleSubmit} 
-          className='w-full max-w-lg flex flex-col md:flex-row gap-4'
-        >
+        <form onSubmit={handleSubmit} className='w-full max-w-lg flex flex-col md:flex-row gap-4'>
           <input 
             type="email" 
             required
@@ -54,14 +55,7 @@ const Newsletter = () => {
           </button>
         </form>
 
-        {/* Feedback Messages */}
-        {status === 'success' && (
-          <p className="mt-4 text-white font-medium">Thanks for subscribing! 🎉</p>
-        )}
-        {status === 'error' && (
-          <p className="mt-4 text-red-200 font-medium">Something went wrong. Please try again.</p>
-        )}
-        
+        {status === 'success' && <p className="mt-4 text-white font-medium">Thanks for subscribing! 🎉</p>}
       </div>
     </div>
   );
