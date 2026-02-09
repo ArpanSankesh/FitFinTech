@@ -26,8 +26,7 @@ export const AppContextProvider = (props) => {
             toast.error(error.message);
         }
     }
-
-    // Function to Logout
+    
     const logout = () => {
         localStorage.removeItem('token');
         setToken(false);
