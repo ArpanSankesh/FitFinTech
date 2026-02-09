@@ -7,6 +7,7 @@ const connectCloudinary = require('./config/cloudinary');
 // Import Routes
 const authRouter = require('./routes/authRoutes');
 const blogRouter = require('./routes/blogRoutes');
+const newsletterRouter = require('./routes/newsletterRoutes');
 
 // App Config
 const app = express();
@@ -41,6 +42,7 @@ app.use(express.urlencoded({ limit: '100mb', extended: true }));
 
 app.use('/api/auth', authRouter); 
 app.use('/api/blogs', blogRouter);
+app.use('/api/newsletter', newsletterRouter);
 
 app.get('/', (req, res) => {
     res.send("API is Working");

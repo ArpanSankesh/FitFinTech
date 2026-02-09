@@ -6,7 +6,7 @@ const Hero = () => {
         <div className='w-full bg-linear-to-br from-[#111827] to-[#134E4A] flex flex-col p-2 md:px-30 md:py-40 justify-center text-white pt-10 pb-15 m'>
             {/* left */}
             <div className="md:w-3/5 ">
-                <h1 className="text-white text-5xl md:text-7xl font-bold mt-15">Be smart, <span className='text-[#0D9488]'>Be fit,</span> <br />Be Rich</h1>
+                <h1 className="text-white text-5xl md:text-7xl font-bold mt-15">Be Smart. <span className='text-[#0D9488]'>Be Fit.</span> <br />Be Rich.</h1>
                 <p className='mt-6 md:text-2xl text-gray-300'>Daily Fitness + Finance + Tech solutions in one place. Your complete guide to a healthier, wealthier, and smarter life.</p>
 
                 <div className='mt-10 flex gap-4 justify-center md:justify-start'>
