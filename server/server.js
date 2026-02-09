@@ -44,7 +44,7 @@ app.use('/api/blogs', blogRouter);
 app.use('/api/newsletter', newsletterRouter);
 
 app.get('/', (req, res) => {
-    res.send("API is Working");
+    res.send("API is Working Fine");
 });
 
 app.listen(PORT, () => console.log(`Server started on PORT ${PORT}`));
