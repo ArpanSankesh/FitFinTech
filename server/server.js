@@ -9,8 +9,8 @@ const authRouter = require('./routes/authRoutes');
 const blogRouter = require('./routes/blogRoutes');
 const newsletterRouter = require('./routes/newsletterRoutes');
 
-// App Config
-const app = express();
+// App Config  const app = express(); this is the fix
+
 const PORT = process.env.PORT || 5000;
 
 // Connect to DB and Cloudinary
